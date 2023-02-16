@@ -1,8 +1,8 @@
 import NavBar from "../componentes/navbar"
-import CartaLogin from "../componentes/cartaLogin"
 import { useNavigate } from "react-router-dom"
+import CartaLogin from "../componentes/cartaLogin"
 
-export default function Inicio(props) {
+export default function Login(props) {
 
   const navigate = useNavigate()
 
@@ -33,13 +33,13 @@ export default function Inicio(props) {
         console.error(data.error)
       }
     }
-    navigate("/TrabajoPW/categorias")
+    navigate("/TrabajoPW/inicio")
   }
 
   return (
     <div className="container-fluid bg-warning" style={{margin: "0", padding: "0"}}>
       <NavBar currentTabIndex={props.currentTabIndex} setCurrentTabIndex={props.setCurrentTabIndex}/>
-      <img className="w-100" src="https://img.freepik.com/foto-gratis/ingredientes-italianos-apetitosos-frescos-sabrosos-comida-viejo-fondo-madera-rustico-listo-cocinar-inicio-italiano-comida-saludable-concepto-cocina_1220-1740.jpg?w=2000"></img>
+      <CartaLogin loginConfirmation={ loginConfirmation }/>
     </div>
   );
 }

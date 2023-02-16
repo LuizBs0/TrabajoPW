@@ -84,7 +84,7 @@ export default function HomeNavbar(props) {
 
           {/* <!--INICIAR SESION--> */}
 
-          <form class="d-flex ms-3" action="/inicio/">
+          <form class="d-flex ms-3" action="/TrabajoPW/login/">
             <button
               class="btn btn-outline-warning d-none d-md-inline-block"
               type="submit"

@@ -5,6 +5,7 @@ import Carrito from "./vistas/carrito.jsx";
 import { useState } from "react";
 import Platos from "./vistas/platos.jsx";
 import Registro from "./vistas/registro.jsx";
+import Login from "./vistas/login.jsx";
 
 function App() {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/TrabajoPW/inicio/" element={<Inicio currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
         <Route path="/TrabajoPW/registro/" element={<Registro currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
+        <Route path="/TrabajoPW/login/" element={<Login currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
         <Route path="/TrabajoPW/categorias/" element={<Categorias currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
         <Route path="/TrabajoPW/carrito/" element={<Carrito currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
         <Route path="/TrabajoPW/platos/:nombre/:resId" element={<Platos currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
