@@ -1,7 +1,17 @@
 import iconoLogin from "../imagenes/Icono Login.png"
 import iconoGoogle from "../imagenes/Icono Google.png"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function CartaLogin() {
+export default function CartaLogin(props) {
+
+  const [usuario, setUsuario] = useState("")
+  const [password, setPassword] = useState("")
+
+  const buttonClick = () => {
+    props.loginConfirmation(usuario, password)
+  }
+
     return(
         <div
         id="container-login"
@@ -29,6 +39,8 @@ export default function CartaLogin() {
               className="form-control bg-light"
               type="text"
               placeholder="Username"
+              value={usuario}
+              onChange={(evt) => setUsuario(evt.target.value)}
             />
           </div>
 
@@ -40,6 +52,8 @@ export default function CartaLogin() {
               className="form-control bg-light"
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={(evt) => setPassword(evt.target.value)}
             />
           </div>
 
@@ -61,17 +75,13 @@ export default function CartaLogin() {
             </div>
           </div>
 
-          <form
-            className="btn btn-info w-100 shadow-sm mt-3 mb-1"
-            action="./pantalla00.html"
-          >
             <button
-              className="btn d-none d-md-inline-block w-100 text-white fw-bolder fs-4"
-              type="submit"
+              className="btn btn-info w-100 shadow-sm mt-3 mb-1 d-none d-md-inline-block w-100 text-white fw-bolder fs-4"
+              type="button"
+              onClick={ buttonClick }
             >
               Iniciar Sesión
             </button>
-          </form>
 
           <div className="d-flex gap-1 justify-content-center mt-1">
             <div>¿No tienes una cuenta?</div>

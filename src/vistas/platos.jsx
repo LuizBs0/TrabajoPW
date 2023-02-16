@@ -1,20 +1,23 @@
 import NavBar from "../componentes/navbar";
-import cartaCategoria from "../componentes/cartaCategoria";
 import CartaCategoria from "../componentes/cartaCategoria";
 import { useEffect, useState } from "react";
-import RES from "../imagenes/restaurante.jpg"
-import { useNavigate } from "react-router-dom";
+import PLA from "../imagenes/plato.jpeg"
+import { useParams } from "react-router-dom";
+import CartaPlato from "../componentes/cartaPlato";
 
-export default function Categorias(props) {
-  const navigate = useNavigate()
+
+
+export default function Platos(props) {
+  let prodsCarrito = JSON.parse(sessionStorage.getItem("PRODUCTOS_CARRITO") || "[]")
+  const params = useParams()
 
   const [listaCategorias, setListaCategorias] = useState([])
-  const [listaRestaurantes, setListaRestaurantes] = useState([])
-  const [catRestaurante, setcatRestaurante] = useState("-1")
+  const [listaPlatos, setListaPlatos] = useState([])
+  const [catPlato, setcatPlato] = useState("-1")
 
   const obtenerCategorias = async () => {
     try {
-        const response = await fetch("http://localhost:8000/clientes/restaurantes/categorias")
+        const response = await fetch("http://localhost:8000/clientes/platos/categorias")
         const data = await response.json()
         setListaCategorias(data.categorias)
     }catch(error) {
@@ -22,25 +25,34 @@ export default function Categorias(props) {
     }
   }
 
-  const obtenerRestaurantes = async (cat) => {
+  const obtenerPlatos = async (cat, res) => {
     try {
-        const response = await fetch(`http://localhost:8000/clientes/restaurantes?cat=${cat}`)
+        const response = await fetch(`http://localhost:8000/clientes/platos?res=${res}&cat=${cat}`)
         const data = await response.json()
-        setListaRestaurantes(data.restaurantes)
-        console.log(data.restaurantes)
+        setListaPlatos(data.platos)
+        console.log(data.platos)
     }catch(error) {
-        console.error("Error obteniendo restaurantes")
+        console.error("Error obteniendo platos")
     }
   }
 
-  const navPlatos = (nombre, resId) => {
-    navigate(`/platos/${nombre}/${resId}`)
+  const addCarrito = (id, nombre, precio) => {
+    const dataPlato = {
+      plaId : id,
+      nombre : nombre,
+      precio : precio,
+      cantidad : 1
+    }
+    prodsCarrito.push(dataPlato)
+    const dataCarritoJSON = JSON.stringify(prodsCarrito)
+    sessionStorage.setItem("PRODUCTOS_CARRITO", dataCarritoJSON)
   }
+
 
   useEffect(() => {
     obtenerCategorias()
-    obtenerRestaurantes(catRestaurante)
-}, [catRestaurante])
+    obtenerPlatos(catPlato, params.resId)
+}, [catPlato])
 
   return (
     <div className="container-fluid bg-warning" style={{ margin: "0", padding: "0" }}>
@@ -50,7 +62,7 @@ export default function Categorias(props) {
         <div className="container">
           <div className="row">
             <div className="col-12 intro-text text-center">
-              <h1 className="fw-bolder p-2">Restaurantes por Categorías</h1>
+              <h1 className="fw-bolder p-2">{`Platos de ${params.nombre}`}</h1>
             </div>
           </div>
         </div>
@@ -66,7 +78,7 @@ export default function Categorias(props) {
               className="nav-link active text-white"
               data-bs-toggle="pill"
               type="button"
-              onClick={()=>setcatRestaurante("-1")}
+              onClick={()=>setcatPlato("-1")}
             >
               Todo
             </button>
@@ -79,7 +91,7 @@ export default function Categorias(props) {
                   className="nav-link text-white"
                   data-bs-toggle="pill"
                   type="button"
-                  onClick={()=>setcatRestaurante(cat.id)}
+                  onClick={()=>setcatPlato(cat.id)}
                 >
                   {cat.nombre}
                 </button>
@@ -91,15 +103,15 @@ export default function Categorias(props) {
         
         <div className="row p-5">
           {
-            listaRestaurantes.map((res)=> {
+            listaPlatos.map((pla)=> {
               return <div className="col-4 col-sm-4 g-5 px-5 text-center">
-                <CartaCategoria
-                    src={RES}
-                    title={res.nombre}
-                    description={res.descripcion}
-                    horario={`Horario de atención: ${res.horario} hrs (Cerrado)`}
-                    navPlatos={navPlatos}
-                    id={res.id}
+                <CartaPlato
+                    src={PLA}
+                    title={pla.nombre}
+                    description={pla.descripcion}
+                    precio={pla.precio}
+                    id={pla.id}
+                    addCarrito={addCarrito}
                 />
               </div>
             })

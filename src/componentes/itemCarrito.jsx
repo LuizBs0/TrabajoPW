@@ -11,14 +11,14 @@ export default function ItemCarrito(props) {
       </td>
       <td>{props.cantidad}</td>
       <td>
-        <button class="bg-danger " type="button">
-          <i class="bi-dash">+</i>
+        <button class="bg-danger btn m-1" type="button" onClick={()=>props.eliminarProd(props.plaId)}>
+          <i class="bi-dash"> - </i>
         </button>
-        <button class="bg-success " type="button">
-          <i class="bi-plus">-</i>
+        <button class="bg-success btn " type="button" onClick={()=>props.aumentarProd(props.plaId)}>
+          <i class="bi-plus">+</i>
         </button>
       </td>
-      <td>{props.total}</td>
+      <td>S/. {props.total}</td>
     </tr>
   );
 }
