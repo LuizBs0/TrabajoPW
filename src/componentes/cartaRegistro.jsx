@@ -2,13 +2,14 @@ import iconoLogin from "../imagenes/Icono Login.png"
 import iconoGoogle from "../imagenes/Icono Google.png"
 import { useState } from "react";
 
-export default function CartaLogin(props) {
+export default function CartaRegistro(props) {
 
   const [usuario, setUsuario] = useState("")
   const [password, setPassword] = useState("")
+  const [rpassword, setRPassword] = useState("")
 
   const buttonClick = () => {
-    props.loginConfirmation(usuario, password)
+    props.regConfirmation(usuario, password, rpassword)
   }
 
     return(
@@ -28,7 +29,7 @@ export default function CartaLogin(props) {
             />
           </div>
 
-          <div className="text-center fs-1 fw-bold">Login</div>
+          <div className="text-center fs-1 fw-bold">Registrarse</div>
 
           <div className="input-group mt-4 mb-3">
             <div className="input-group-text bg-info">
@@ -56,38 +57,27 @@ export default function CartaLogin(props) {
             />
           </div>
 
-          <div className="d-flex justify-content-around mt-1">
-            <div className="d-flex align-items-center gap-1">
-              <input className="form-check-input" type="checkbox" />
-              <div className="pt-1" style={{fontSize: "0.9rem"}}>
-                Recordar contraseña
-              </div>
+          <div className="input-group mt-1 mb-2">
+            <div className="input-group-text bg-info">
+              <i className="bi-lock-fill fs-4"></i>
             </div>
-            <div className="pt-1 mb-1">
-              <a
-                href="#"
-                className="text-decoration-none text-info fw-semibold fst-italic"
-                style={{fontSize: "0.9rem"}}
-              >
-                ¿Olvidaste tu contraseña?
-              </a>
-            </div>
+            <input
+              className="form-control bg-light"
+              type="password"
+              placeholder="Repetir password"
+              value={rpassword}
+              onChange={(evt) => setRPassword(evt.target.value)}
+            />
           </div>
+
 
             <button
               className="btn btn-info w-100 shadow-sm mt-3 mb-1 d-none d-md-inline-block w-100 text-white fw-bolder fs-4"
               type="button"
               onClick={ buttonClick }
             >
-              Iniciar Sesión
+              Registrar
             </button>
-
-          <div className="d-flex gap-1 justify-content-center mt-1">
-            <div>¿No tienes una cuenta?</div>
-            <a href="/TrabajoPW/registro/" className="text-decoration-none text-info fw-semibold">
-              Registrarse
-            </a>
-          </div>
 
           <div className="p-3">
             <div className="border-bottom text-center" style={{height: "0.9rem"}}>
