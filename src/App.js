@@ -10,11 +10,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/inicio/" element={<Inicio currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
-        <Route path="/categorias/" element={<Categorias currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
-        <Route path="/carrito/" element={<Carrito currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
-        <Route path="/platos/:nombre/:resId" element={<Platos currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
-        <Route path="*" element={<Navigate to="/inicio/" replace />} />
+        <Route path="/TrabajoPW/inicio/" element={<Inicio currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
+        <Route path="/TrabajoPW/categorias/" element={<Categorias currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
+        <Route path="/TrabajoPW/carrito/" element={<Carrito currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
+        <Route path="/TrabajoPW/platos/:nombre/:resId" element={<Platos currentTabIndex={currentTabIndex} setCurrentTabIndex={setCurrentTabIndex}/>} />
+        <Route path="*" element={<Navigate to="/TrabajoPW/inicio/" replace />} />
       </Routes>
     </BrowserRouter>
   );
