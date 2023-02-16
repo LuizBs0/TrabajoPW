@@ -33,7 +33,7 @@ export default function Inicio(props) {
         console.error(data.error)
       }
     }
-    navigate("/categorias")
+    navigate("/TrabajoPW/categorias")
   }
 
   return (

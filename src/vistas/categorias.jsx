@@ -34,7 +34,7 @@ export default function Categorias(props) {
   }
 
   const navPlatos = (nombre, resId) => {
-    navigate(`/platos/${nombre}/${resId}`)
+    navigate(`/TrabajoPW/platos/${nombre}/${resId}`)
   }
 
   useEffect(() => {

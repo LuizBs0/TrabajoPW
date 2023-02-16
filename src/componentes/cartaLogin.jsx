@@ -1,7 +1,6 @@
 import iconoLogin from "../imagenes/Icono Login.png"
 import iconoGoogle from "../imagenes/Icono Google.png"
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function CartaLogin(props) {
 

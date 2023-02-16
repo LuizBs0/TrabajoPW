@@ -35,7 +35,7 @@ export default function HomeNavbar(props) {
                 class={props.currentTabIndex == 0? "nav-link fs-5 fw-bolder ms-3 active": "nav-link fs-5 fw-bolder ms-3"} 
                 aria-current="page"
                 onClick={() => {
-                  navigate("/inicio");
+                  navigate("/TrabajoPW/inicio");
                   props.setCurrentTabIndex(1);
                   }}
               >
@@ -47,7 +47,7 @@ export default function HomeNavbar(props) {
               <a
                 class={props.currentTabIndex == 1? "nav-link fs-5 fw-bolder ms-3 active": "nav-link fs-5 fw-bolder ms-3"} 
                 onClick={() => {
-                  navigate("/categorias");
+                  navigate("/TrabajoPW/categorias");
                   props.setCurrentTabIndex(1);
                 }}
               >
@@ -59,7 +59,7 @@ export default function HomeNavbar(props) {
               <a
                 class={props.currentTabIndex == 2? "nav-link fs-5 fw-bolder ms-3 active": "nav-link fs-5 fw-bolder ms-3"} 
                 onClick={() => {
-                    navigate("/carrito");
+                    navigate("/TrabajoPW/carrito");
                     props.setCurrentTabIndex(2);
                   }}
               >
