@@ -14,7 +14,7 @@ export default function Categorias(props) {
 
   const obtenerCategorias = async () => {
     try {
-        const response = await fetch("http://localhost:8000/clientes/restaurantes/categorias")
+        const response = await fetch("https://djangoback.azurewebsites.net/clientes/restaurantes/categorias")
         const data = await response.json()
         setListaCategorias(data.categorias)
     }catch(error) {
@@ -24,7 +24,7 @@ export default function Categorias(props) {
 
   const obtenerRestaurantes = async (cat) => {
     try {
-        const response = await fetch(`http://localhost:8000/clientes/restaurantes?cat=${cat}`)
+        const response = await fetch(`https://djangoback.azurewebsites.net/clientes/restaurantes?cat=${cat}`)
         const data = await response.json()
         setListaRestaurantes(data.restaurantes)
         console.log(data.restaurantes)

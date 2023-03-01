@@ -17,7 +17,7 @@ export default function Platos(props) {
 
   const obtenerCategorias = async () => {
     try {
-        const response = await fetch("http://localhost:8000/clientes/platos/categorias")
+        const response = await fetch("https://djangoback.azurewebsites.net/clientes/platos/categorias")
         const data = await response.json()
         setListaCategorias(data.categorias)
     }catch(error) {
@@ -27,7 +27,7 @@ export default function Platos(props) {
 
   const obtenerPlatos = async (cat, res) => {
     try {
-        const response = await fetch(`http://localhost:8000/clientes/platos?res=${res}&cat=${cat}`)
+        const response = await fetch(`https://djangoback.azurewebsites.net/clientes/platos?res=${res}&cat=${cat}`)
         const data = await response.json()
         setListaPlatos(data.platos)
         console.log(data.platos)

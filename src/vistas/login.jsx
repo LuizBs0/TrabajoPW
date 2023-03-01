@@ -9,7 +9,7 @@ export default function Login(props) {
   const loginConfirmation = async (usuario, password) => {
     if (usuario !== "" && password !=="") {
       const response = await fetch(
-        `http://localhost:8000/clientes/login`,
+        `https://djangoback.azurewebsites.net/clientes/login`,
         {
             method : "POST",
             body : JSON.stringify(

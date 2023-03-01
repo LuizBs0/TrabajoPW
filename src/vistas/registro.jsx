@@ -9,7 +9,7 @@ export default function Registro(props) {
   const regConfirmation = async (usuario, password, rpassword) => {
     if (usuario !== "" && (password !=="" && rpassword !=="") && (password == rpassword)) {
       const response = await fetch(
-        `http://localhost:8000/clientes/register`,
+        `https://djangoback.azurewebsites.net/clientes/register`,
         {
             method : "POST",
             body : JSON.stringify(
