@@ -37,6 +37,7 @@ export default function CartaLogin(props) {
             <input
               className="form-control bg-light"
               type="text"
+              required
               placeholder="Username"
               value={usuario}
               onChange={(evt) => setUsuario(evt.target.value)}
@@ -51,6 +52,7 @@ export default function CartaLogin(props) {
               className="form-control bg-light"
               type="password"
               placeholder="Password"
+              required
               value={password}
               onChange={(evt) => setPassword(evt.target.value)}
             />
